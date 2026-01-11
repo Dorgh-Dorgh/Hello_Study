@@ -29,7 +29,7 @@ router.post('/signup', async (req, res) => {
       message: "이미 존재하는 아이디입니다."
     })
   }
-
+  //비밀번호는 해쉬로 저장
   const hashedPassword = await bcrypt.hash(password, 10);
   users.push({ username : username, password : hashedPassword });
 
@@ -52,7 +52,7 @@ router.post('/signin', async (req, res) => {
     message: "아이디 또는 비밀번호가 일치하지 않습니다."
     })
   }
-
+  //비밀번호가 해쉬로 저장되었기에, 입력값을 해쉬하여 기존과 비교
   const isMatch = await bcrypt.compare(password, user.password);
   if(!isMatch)
   {

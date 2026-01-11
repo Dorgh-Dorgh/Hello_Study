@@ -1,7 +1,7 @@
 import "../App.css";
 import { useNavigate, Routes, Route } from "react-router-dom";
 
-import Login from "./signin.jsx";
+import Signin from "./signin.jsx";
 import Signup from "./signup.jsx";
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
 
       <main className="main">
         <Routes>
-          <Route path="/signin" element={<Login />} />
+          <Route path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
 
           <Route path="/" element={<div>메인 페이지</div>} />

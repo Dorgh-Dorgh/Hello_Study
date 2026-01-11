@@ -24,4 +24,4 @@ function Signin() {
   );
 }
 
-export default Login;
+export default Signin;
