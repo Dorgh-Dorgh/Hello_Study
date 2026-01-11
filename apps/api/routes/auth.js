@@ -38,8 +38,34 @@ router.post('/signup', async (req, res) => {
     message: "회원가입이 성공하였습니다."
   })
 
+});
 
-   
+// POST /api/auth/signin
+router.post('/signin', async (req, res) => {
+  const { username, password } = req.body;
+  const user = users.find(user => user.username === username);
+
+  if(!user)
+  {
+    return res.status(400).json({
+    success: false,
+    message: "아이디 또는 비밀번호가 일치하지 않습니다."
+    })
+  }
+
+  const isMatch = await bcrypt.compare(password, user.password);
+  if(!isMatch)
+  {
+    return res.status(400).json({
+    success: false,
+    message: "아이디 또는 비밀번호가 일치하지 않습니다."
+    })
+  }
+  
+  return res.status(200).json({
+    success: true,
+    message: "로그인 되었습니다."
+  })
 
 });
 
